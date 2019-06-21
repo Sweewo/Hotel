@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Hotel.Application.Tests": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

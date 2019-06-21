@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+
+  hotel:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+      - ASPNETCORE_URLS=http://0.0.0.0:80
+      - ConnectionStrings__HotelDatabase=server=data.mysql;database=hotel_db;userid=owner;password=hotel_db_owner$pass
+    ports:
+      - "80:80"
+      - "443:443"

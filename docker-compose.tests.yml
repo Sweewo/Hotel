@@ -1,0 +1,9 @@
+version: '3.4'
+
+services:
+
+  hotel.application.tests:
+    image: hotel-application-tests:latest
+    build:
+      context: .
+      dockerfile: Hotel.Application.Tests/Dockerfile
