@@ -28,6 +28,13 @@ namespace Hotel.Application.Tests.Infrastructure
                 new RoomType() { Code = "Double room" }
                 );
 
+            context.Rooms.AddRange(
+                new Room() { Number = 12, Floor = 1, RoomTypeId = 1 },
+                new Room() { Number = 22, Floor = 2, RoomTypeId = 1 },
+                new Room() { Number = 23, Floor = 2, RoomTypeId = 2 }
+                );
+
+            context.SaveChanges();
             return context;
         }
 

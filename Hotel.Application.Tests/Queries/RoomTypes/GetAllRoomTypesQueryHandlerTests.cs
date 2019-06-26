@@ -10,29 +10,26 @@ using Xunit;
 
 namespace Hotel.Application.Tests.Queries.RoomTypes
 {
+    [Collection("QueryCollection")]
     public class GetAllRoomTypesQueryHandlerTests
     {
-        [Collection("QueryCollection")]
-        public class GetUserQueryHandlerTests
+        private readonly HotelDbContext context;
+        private readonly IMapper mapper;
+
+        public GetAllRoomTypesQueryHandlerTests(QueryTestFixture fixture)
         {
-            private readonly HotelDbContext context;
-            private readonly IMapper mapper;
+            context = fixture.Context;
+            mapper = fixture.Mapper;
+        }
 
-            public GetUserQueryHandlerTests(QueryTestFixture fixture)
-            {
-                context = fixture.Context;
-                mapper = fixture.Mapper;
-            }
+        [Fact]
+        public async Task GetAllRoomTypesTest()
+        {
+            var sut = new GetAllRoomTypesQueryHandler(context, mapper);
 
-            [Fact]
-            public async Task GetAllRoomTypesTest()
-            {
-                var sut = new GetAllRoomTypesQueryHandler(context, mapper);
+            var result = await sut.Handle(new GetAllRoomTypesQuery(), CancellationToken.None);
 
-                var result = await sut.Handle(new GetAllRoomTypesQuery(), CancellationToken.None);
-
-                result.ShouldBeOfType<List<RoomTypeViewModel>>();
-            }
+            result.ShouldBeOfType<List<RoomTypeViewModel>>();
         }
     }
 }
